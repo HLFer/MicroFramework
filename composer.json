@@ -1,0 +1,21 @@
+{
+  "name": "HenriqueFernandes/MicroFramework",
+  "description": "MicroFramework with MVC",
+  "license": "MIT",
+  "type": "Project",
+  "authors":[
+    {
+      "name": "Henrique L. Fernandes",
+      "email": "henry1991.contato@gmail.com"
+    }
+  ],
+  "autoload":{
+    "psr-4":{
+      "App\\": "app/",
+      "Core\\": "core"
+    }
+  },
+  "require": {
+    "php": ">=5.4"
+  }
+}
