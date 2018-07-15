@@ -28,11 +28,16 @@ class ComposerStaticInit809a66a73fe9885869261e82c0855af8
         ),
     );
 
+    public static $classMap = array (
+        'Core\\Route' => __DIR__ . '/../..' . '/core/Route.php',
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit809a66a73fe9885869261e82c0855af8::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit809a66a73fe9885869261e82c0855af8::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit809a66a73fe9885869261e82c0855af8::$classMap;
 
         }, null, ClassLoader::class);
     }
