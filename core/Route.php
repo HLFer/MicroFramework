@@ -25,6 +25,19 @@ class Route{
       $routeArray = explode('/', $route[0]);
       echo '<br>';
       var_dump($routeArray);
+      for($i = 0; $i < count($routeArray); $i++){
+        if((strpos($routeArray[$i], '{') !== false) && (count($urlArray) == count($routeArray))){
+          $routeArray[$i] = $urlArray[$i];
+        }
+        $route[0] = implode($routeArray, '/');
+      }
+      if($url == $route[0]){
+        echo '<br>Rota Valida';
+        break;
+      }
+      else{
+        echo '<br>Rota Invalida';
+      }
     }
 
   }
