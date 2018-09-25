@@ -31,13 +31,14 @@ class Route
     {
         $url = $this->getUrl();
         $urlArray = explode('/', $url);
+        $found = false;
 
         foreach ($this->routes as $route) {
             $routeArray = explode('/', $route[0]);
             for ($i = 0; $i < count($routeArray); ++$i) {
                 if ((strpos($routeArray[$i], '{') !== false) && (count($urlArray) == count($routeArray))) {
                     $routeArray[$i] = $urlArray[$i];
-                    $param[] = $urlArray[$i];
+                    $param[] = $urlArray[$i]; 
                 }
                 $route[0] = implode($routeArray, '/');
             }
@@ -50,7 +51,8 @@ class Route
         }
 
         if ($found) {
-            \Core\Container::newController($controller);
+            $make = Container::newController($controller);
+            $make->$action();
         }
     }
 }
