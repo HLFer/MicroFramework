@@ -38,23 +38,12 @@ class ComposerStaticInit809a66a73fe9885869261e82c0855af8
         ),
     );
 
-    public static $classMap = array (
-        'App\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/controllers/HomeController.php',
-        'Core\\Container' => __DIR__ . '/../..' . '/core/Container.php',
-        'Core\\Route' => __DIR__ . '/../..' . '/core/Route.php',
-        'PhpGpio\\Gpio' => __DIR__ . '/..' . '/ronanguilloux/php-gpio/src/PhpGpio/Gpio.php',
-        'PhpGpio\\Pi' => __DIR__ . '/..' . '/ronanguilloux/php-gpio/src/PhpGpio/Pi.php',
-        'PhpGpio\\Sensors\\DS18B20' => __DIR__ . '/..' . '/ronanguilloux/php-gpio/src/PhpGpio/Sensors/DS18B20.php',
-        'PhpGpio\\Sensors\\SensorInterface' => __DIR__ . '/..' . '/ronanguilloux/php-gpio/src/PhpGpio/Sensors/SensorInterface.php',
-    );
-
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit809a66a73fe9885869261e82c0855af8::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit809a66a73fe9885869261e82c0855af8::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInit809a66a73fe9885869261e82c0855af8::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit809a66a73fe9885869261e82c0855af8::$classMap;
 
         }, null, ClassLoader::class);
     }

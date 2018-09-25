@@ -49,10 +49,25 @@ class Route
                 break;
             }
         }
-
         if ($found) {
             $make = Container::newController($controller);
-            $make->$action();
+            //$make->$action();
+            $make->$action($param[0]);
+            exit;
+            switch (count($param)){
+                
+                case 1:
+                $make->$action($param[0]);
+                break;
+                
+                case 2:
+                $make->$action($param[0], $param[1]);
+                break;
+
+                default:
+                $make->$action();
+                break;
+            }
         }
     }
 }
