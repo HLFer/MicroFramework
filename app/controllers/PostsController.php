@@ -6,9 +6,11 @@ class PostsController
 {
     public function index()
     {
-        echo 'Posts';
+        echo 'Rota de Posts';
     }
-    public function show($id){
-        echo $id;
-    } 
+    public function show($id)
+    {
+        echo '<pre>';
+        print_r('Rota de Posts - Método Show: ' . $id);
+    }
 }

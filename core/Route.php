@@ -32,14 +32,15 @@ class Route
         $url = $this->getUrl();
         $urlArray = explode('/', $url);
         $found = false;
-
+        $param = [];
         foreach ($this->routes as $route) {
             $routeArray = explode('/', $route[0]);
             for ($i = 0; $i < count($routeArray); ++$i) {
                 if ((strpos($routeArray[$i], '{') !== false) && (count($urlArray) == count($routeArray))) {
                     $routeArray[$i] = $urlArray[$i];
-                    $param[] = $urlArray[$i]; 
+                    array_push($param, $urlArray[$i]);
                 }
+
                 $route[0] = implode($routeArray, '/');
             }
             if ($url == $route[0]) {
@@ -51,22 +52,19 @@ class Route
         }
         if ($found) {
             $make = Container::newController($controller);
-            //$make->$action();
-            $make->$action($param[0]);
-            exit;
-            switch (count($param)){
-                
+            switch (count($param)) {
                 case 1:
-                $make->$action($param[0]);
-                break;
-                
+                    $make->$action($param[0]);
+                    break;
                 case 2:
-                $make->$action($param[0], $param[1]);
-                break;
-
+                    $make->$action($param[0], $param[1]);
+                    break;
+                case 3:
+                    $make->$action($param[0], $param[1], $param[2]);
+                    break;
                 default:
-                $make->$action();
-                break;
+                    $make->$action();
+                    break;
             }
         }
     }
