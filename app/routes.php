@@ -1,7 +1,20 @@
 <?php
+/*
+ * INCIANDO SISTEMAS DE ROTAS DO FRAMEWORK, VOCÊ DEVE PASSAR AS ROTAS
+ * NO SEGUINTE FORMATO ['/ROTA', 'CONTROLLER@METODO']
+ * CASO QUEIRA PASSAR REQUISIÇÕES BASTAS SEUS METODOS RECEBEREM AS MESMAS,
+ * NÃO É NECESSARIO DEIXAR ISSO CLARO EM SUAS ROTAS.
+ */
 
-$route[] = ['/', 'HomeController@index'];
-$route[] = ['/posts', 'PostsController@index'];
-$route[] = ['/post/{id}/show', 'PostsController@show'];
+/* NAO MECHER ROTAS DEDICADAS A API
+ * DA SMARTDRAGON PARA CLIENTES QUE CONTRATAM
+ * O ARQUIVO PURIFICADO PARA GERAR SUAS PROPRIAS INTEGRAÇÕES
+ */
+$routes[] = ['/api', 'ApiController@login'];
+/* -ATENÇÃO :
+ * A ROTA / NÃO PODE RECEBER PARAMETROS VIA URL POIS ELA NAO ESTA ACESSANDO
+ * UM METODO ESPECIFICO, PARA RECEBER PARAMETROS VIA URL SOMENTE DEMAIS ROTAS
+ */
 
-return $route;
+$routes[] = ['/', 'IndexController@index'];
+return $routes;
